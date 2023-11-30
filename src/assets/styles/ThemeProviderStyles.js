@@ -14,6 +14,7 @@ const Theme = {
       default: '"Roboto", sans-serif',
     },
     weight: {
+      veryThin: '100',
       thin: '300',
       normal: '400',
       semiBold: '500',

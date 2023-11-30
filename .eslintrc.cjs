@@ -44,5 +44,6 @@ module.exports = {
     'global-require': 0,
     'react/style-prop-object': 0,
     'no-console': 'off',
+    'no-else-return': 'off',
   },
 };

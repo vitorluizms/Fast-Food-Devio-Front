@@ -21,4 +21,8 @@ export const CategoryContainer = styled.button`
     background: #ffffff;
     color: #ffffff;
   }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;

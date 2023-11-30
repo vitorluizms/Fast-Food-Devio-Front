@@ -3,18 +3,24 @@ import Navbar from '../../components/NavBar';
 import { useGetProducts } from '../../hooks/useGetProduct';
 import { productStore } from '../../store/ProductsStore';
 import { NavCategoriesContainer, Container, TitleContainer, CategoriesContainer } from './styles';
-import Category from './Categories';
+import Category from '../../components/Categories';
 import { useGenerateCategories } from '../../hooks/useGenerateCategories';
+import CombosComponent from '../../components/Products/Combo';
+import { getProducts } from '../../services/productsApi';
 
 export default function Feed() {
-  const { products } = productStore();
-  const { getProducts } = useGetProducts();
+  const { products, setProducts } = productStore();
   const [search, setSearch] = useState('');
   const { categories } = useGenerateCategories();
 
   useEffect(() => {
-    getProducts();
+    getProduct();
   }, []);
+
+  async function getProduct() {
+    const response = await getProducts();
+    setProducts(response.data);
+  }
 
   return (
     <>
@@ -45,6 +51,13 @@ export default function Feed() {
             ))}
           </CategoriesContainer>
         </NavCategoriesContainer>
+        <NavCategoriesContainer>
+          <article>
+            <h2>Produtos</h2>
+            <p>Selecione um produto para adicionar ao seu pedido</p>
+          </article>
+        </NavCategoriesContainer>
+        <CombosComponent />
       </Container>
     </>
   );

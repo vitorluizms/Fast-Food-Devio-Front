@@ -5,7 +5,7 @@ export async function getProducts() {
   await axios
     .get(`${import.meta.env.VITE_API_URL}/products`)
     .then(response => (products = response))
-    .catch(response => console.log(response));
+    .catch(response => console.log(response.config));
 
   return products;
 }

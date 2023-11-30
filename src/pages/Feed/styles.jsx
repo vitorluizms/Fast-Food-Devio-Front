@@ -56,7 +56,6 @@ export const NavCategoriesContainer = styled.section`
     font-family: ${({ theme }) => theme.fonts.family.default};
     font-weight: ${({ theme }) => theme.fonts.weight.bold};
     font-size: ${({ theme }) => theme.fonts.size.default};
-    letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
     color: ${({ theme }) => theme.color.black};
   }
 

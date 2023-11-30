@@ -59,6 +59,10 @@ export const OrderButton = styled.button`
   font-weight: ${({ theme }) => theme.fonts.weight.bold};
   letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
   color: ${({ theme }) => theme.color.white};
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const KitchenButton = styled.button`
@@ -75,6 +79,10 @@ export const KitchenButton = styled.button`
   font-weight: ${({ theme }) => theme.fonts.weight.bold};
   letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
   color: ${({ theme }) => theme.color.white};
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 export const PickUpButton = styled.button`
   width: 80px;
@@ -90,4 +98,8 @@ export const PickUpButton = styled.button`
   font-weight: ${({ theme }) => theme.fonts.weight.bold};
   letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
   color: ${({ theme }) => theme.color.white};
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
