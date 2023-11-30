@@ -42,7 +42,7 @@ export const NavBar = styled.nav`
 
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 10px;
 `;
 
 export const OrderButton = styled.button`

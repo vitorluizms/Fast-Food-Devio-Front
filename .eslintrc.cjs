@@ -43,5 +43,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'global-require': 0,
     'react/style-prop-object': 0,
+    'no-console': 'off',
   },
 };

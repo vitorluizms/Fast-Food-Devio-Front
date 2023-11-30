@@ -6,6 +6,8 @@ const Theme = {
     black: '#121212',
     lightPink: '#F96666',
     lightYellow: '#FFEB70',
+    lightGray: '#D6D6D6',
+    gray: '#919191',
   },
   fonts: {
     family: {
@@ -13,7 +15,8 @@ const Theme = {
     },
     weight: {
       thin: '300',
-      normal: '500',
+      normal: '400',
+      semiBold: '500',
       bold: '700',
     },
     size: {
