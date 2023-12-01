@@ -23,6 +23,7 @@ export default function ProductComponent({ product }) {
 
   useEffect(() => {
     setScrollTargets(product.name, target);
+    setScrollTargets(product.id, target);
   }, [setScrollTargets]);
 
   return (
