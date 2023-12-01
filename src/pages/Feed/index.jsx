@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/NavBar';
-import { useGetProducts } from '../../hooks/useGetProduct';
 import { productStore } from '../../store/ProductsStore';
 import { NavCategoriesContainer, Container, TitleContainer, CategoriesContainer } from './styles';
 import Category from '../../components/Categories';
