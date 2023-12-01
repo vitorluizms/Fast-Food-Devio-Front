@@ -11,11 +11,14 @@ import AccompanimentComponent from '../../components/Products/Accompaniment';
 import DrinkComponent from '../../components/Products/Drink';
 import DessertComponent from '../../components/Products/Dessert';
 import ModalComponent from '../../modal';
+import { searchStore } from '../../store/SearchStore';
+import { useSearch } from '../../hooks/useSearch';
 
 export default function Feed() {
   const { setProducts } = productStore();
-  const [search, setSearch] = useState('');
+  const { search, setSearch } = searchStore();
   const { categories } = useGenerateCategories();
+  const { searchProduct } = useSearch();
 
   useEffect(() => {
     getProduct();
@@ -26,6 +29,12 @@ export default function Feed() {
     setProducts(response.data);
   }
 
+  function handleSearch(e) {
+    e.preventDefault();
+
+    searchProduct(search);
+  }
+
   return (
     <>
       <Navbar />
@@ -33,7 +42,7 @@ export default function Feed() {
         <ModalComponent />
         <TitleContainer>
           <h1>Seja bem vindo!</h1>
-          <form>
+          <form onSubmit={handleSearch}>
             <input
               name="search"
               id="search"

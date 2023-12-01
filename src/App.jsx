@@ -5,6 +5,7 @@ import Feed from './pages/Feed';
 import Theme from './assets/styles/ThemeProviderStyles';
 import ResetStyles from './assets/styles/ResetStyle';
 import GlobalStyles from './assets/styles/GlobalStyles';
+import Kitchen from './pages/Kitchen';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Feed />} />
+            <Route path="/kitchen" element={<Kitchen />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

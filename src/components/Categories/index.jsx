@@ -5,8 +5,8 @@ import { refStore } from '../../store/useRefScroll';
 export default function Category({ category }) {
   const { scrollTargets } = refStore();
   function handleClick() {
-    console.log(scrollTargets);
     const target = scrollTargets[category.name];
+
     if (target && target.current) {
       target.current.scrollIntoView({ behavior: 'smooth' });
     }

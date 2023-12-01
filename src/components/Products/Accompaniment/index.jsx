@@ -12,6 +12,8 @@ export default function AccompanimentComponent() {
 
   useEffect(() => {
     setScrollTargets('Accompaniment', target);
+    setScrollTargets('Acompanhamento', target);
+    setScrollTargets('Batata', target);
   }, [setScrollTargets]);
 
   return (

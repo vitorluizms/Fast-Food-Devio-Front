@@ -12,6 +12,7 @@ export default function DrinkComponent() {
 
   useEffect(() => {
     setScrollTargets('Drink', target);
+    setScrollTargets('Bebida', target);
   }, [setScrollTargets]);
 
   return (

@@ -16,7 +16,7 @@ export const StyledModal = styled(Modal)`
   padding: 20px;
   border-radius: ${({ theme }) => theme.border.radius.small};
   outline: none;
-  overflow-y: visible;
+  overflow: scroll;
 
   display: flex;
   flex-direction: column;

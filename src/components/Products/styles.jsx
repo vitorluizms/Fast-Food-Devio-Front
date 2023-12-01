@@ -7,6 +7,7 @@ export const ProductListContainer = styled.article`
   display: flex;
   gap: 50px;
   overflow: auto;
+  overflow-y: hidden;
 `;
 
 export const ProductContainer = styled.div`

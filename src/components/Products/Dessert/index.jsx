@@ -12,6 +12,7 @@ export default function DessertComponent() {
 
   useEffect(() => {
     setScrollTargets('Dessert', target);
+    setScrollTargets('Sobremesa', target);
   }, [setScrollTargets]);
 
   return (

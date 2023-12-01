@@ -12,6 +12,8 @@ export default function BurgerComponent() {
 
   useEffect(() => {
     setScrollTargets('Hamburger', target);
+    setScrollTargets('Burger', target);
+    setScrollTargets('Hambúrguer', target);
   }, [setScrollTargets]);
 
   return (
