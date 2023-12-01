@@ -6,7 +6,7 @@ export const ProductSection = styled.section`
 
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 10px;
 
   h2 {
     font-family: ${({ theme }) => theme.fonts.family.default};

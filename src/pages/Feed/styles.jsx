@@ -70,8 +70,11 @@ export const NavCategoriesContainer = styled.section`
 
 export const CategoriesContainer = styled.article`
   width: 100%;
-  height: auto;
+  height: 150px;
+  padding: 10px;
 
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  overflow: auto;
 `;

@@ -10,7 +10,7 @@ export default function ProductComponent({ product }) {
   const image = {
     Combo: combo,
     Dessert: dessert,
-    Drink: drink,
+    Drinks: drink,
     Accompaniment: accompaniment,
     Hamburger: burger,
   };

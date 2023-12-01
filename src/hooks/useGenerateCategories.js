@@ -7,13 +7,19 @@ export const useGenerateCategories = () => {
       portuguese: 'Combos',
     },
     {
+      name: 'Hamburger',
+      image:
+        'https://img.freepik.com/fotos-premium/delicioso-hamburguer-fresco-isolado-no-fundo-branco-close-up_93675-104918.jpg',
+      portuguese: 'Hambúrgueres',
+    },
+    {
       name: 'Accompaniment',
       image:
         'https://img.freepik.com/fotos-premium/uma-batata-frita-crocante-isolada-em-um-fundo-branco_890183-3915.jpg',
       portuguese: 'Acompanhamentos',
     },
     {
-      name: 'Drinks',
+      name: 'Drink',
       image: 'https://i.pinimg.com/originals/e6/b8/f8/e6b8f8c516a80440cac570cefddc175f.jpg',
       portuguese: 'Bebidas',
     },

@@ -6,9 +6,12 @@ import Category from '../../components/Categories';
 import { useGenerateCategories } from '../../hooks/useGenerateCategories';
 import CombosComponent from '../../components/Products/Combo';
 import { getProducts } from '../../services/productsApi';
+import BurgerComponent from '../../components/Products/Hamburger';
+import AccompanimentComponent from '../../components/Products/Accompaniment';
+import DrinkComponent from '../../components/Products/Drink';
 
 export default function Feed() {
-  const { products, setProducts } = productStore();
+  const { setProducts } = productStore();
   const [search, setSearch] = useState('');
   const { categories } = useGenerateCategories();
 
@@ -57,6 +60,9 @@ export default function Feed() {
           </article>
         </NavCategoriesContainer>
         <CombosComponent />
+        <BurgerComponent />
+        <AccompanimentComponent />
+        <DrinkComponent />
       </Container>
     </>
   );
