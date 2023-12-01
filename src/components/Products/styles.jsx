@@ -27,7 +27,7 @@ export const WallpaperImage = styled.img`
   border-radius: ${({ theme }) => theme.border.radius.medium};
   box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.2);
 
-  position: relative;
+  position: ${({ $isModalOpen }) => ($isModalOpen === true ? 'none' : 'relative')};
   z-index: 1;
 `;
 
@@ -40,7 +40,7 @@ export const DescriptionContainer = styled.div`
   background: ${({ theme }) => theme.color.white};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  position: relative;
+  position: ${({ $isModalOpen }) => ($isModalOpen === true ? 'none' : 'relative')};
   z-index: 2;
 
   display: flex;

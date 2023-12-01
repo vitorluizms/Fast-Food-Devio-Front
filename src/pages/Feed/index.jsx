@@ -9,6 +9,8 @@ import { getProducts } from '../../services/productsApi';
 import BurgerComponent from '../../components/Products/Hamburger';
 import AccompanimentComponent from '../../components/Products/Accompaniment';
 import DrinkComponent from '../../components/Products/Drink';
+import DessertComponent from '../../components/Products/Dessert';
+import ModalComponent from '../../modal';
 
 export default function Feed() {
   const { setProducts } = productStore();
@@ -28,6 +30,7 @@ export default function Feed() {
     <>
       <Navbar />
       <Container>
+        <ModalComponent />
         <TitleContainer>
           <h1>Seja bem vindo!</h1>
           <form>
@@ -63,6 +66,7 @@ export default function Feed() {
         <BurgerComponent />
         <AccompanimentComponent />
         <DrinkComponent />
+        <DessertComponent />
       </Container>
     </>
   );

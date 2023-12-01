@@ -5,6 +5,7 @@ import burger from '../../assets/images/burger.jpg';
 import drink from '../../assets/images/drink.jpg';
 import dessert from '../../assets/images/dessert.jpg';
 import accompaniment from '../../assets/images/accompaniment.jpg';
+import { modalStore } from '../../store/ModalStore';
 
 export default function ProductComponent({ product }) {
   const image = {
@@ -15,10 +16,12 @@ export default function ProductComponent({ product }) {
     Hamburger: burger,
   };
   const descriptionArray = product.description.split(/\s*,\s*/);
+  const { isModalOpen, setIsModalOpen } = modalStore();
+
   return (
-    <ProductContainer>
-      <WallpaperImage src={image[product.type]} alt="wallpaper-product" />
-      <DescriptionContainer>
+    <ProductContainer onClick={() => setIsModalOpen(!isModalOpen)}>
+      <WallpaperImage src={image[product.type]} alt="wallpaper-product" $isModalOpen={isModalOpen} />
+      <DescriptionContainer $isModalOpen={isModalOpen}>
         <figure>
           <img src={product.image} alt={product.name} />
         </figure>
