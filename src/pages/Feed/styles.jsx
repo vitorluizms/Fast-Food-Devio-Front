@@ -33,7 +33,7 @@ export const TitleContainer = styled.section`
     width: 30%;
     height: 45px;
 
-    background: #f4f4f4;
+    background: ${({ theme }) => theme.color.input};
     border: 1px solid #c4c4c4;
     border-radius: ${({ theme }) => theme.border.radius.small};
     padding-left: 10px;

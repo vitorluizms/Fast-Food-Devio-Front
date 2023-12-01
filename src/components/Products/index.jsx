@@ -7,6 +7,7 @@ import dessert from '../../assets/images/dessert.jpg';
 import accompaniment from '../../assets/images/accompaniment.jpg';
 import { modalStore } from '../../store/ModalStore';
 import { refStore } from '../../store/useRefScroll';
+import { useSelectProduct } from '../../hooks/useSelectProduct';
 
 export default function ProductComponent({ product }) {
   const image = {
@@ -17,7 +18,8 @@ export default function ProductComponent({ product }) {
     Hamburger: burger,
   };
   const descriptionArray = product.description.split(/\s*,\s*/);
-  const { isModalOpen, setIsModalOpen } = modalStore();
+  const { isModalOpen } = modalStore();
+  const { handleClick } = useSelectProduct();
   const { setScrollTargets } = refStore();
   const target = useRef(null);
 
@@ -27,7 +29,7 @@ export default function ProductComponent({ product }) {
   }, [setScrollTargets]);
 
   return (
-    <ProductContainer onClick={() => setIsModalOpen(!isModalOpen)} ref={target}>
+    <ProductContainer onClick={() => handleClick(product)} ref={target}>
       <WallpaperImage src={image[product.type]} alt="wallpaper-product" $isModalOpen={isModalOpen} />
       <DescriptionContainer $isModalOpen={isModalOpen}>
         <figure>

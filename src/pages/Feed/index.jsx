@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../../components/NavBar';
 import { productStore } from '../../store/ProductsStore';
 import { NavCategoriesContainer, Container, TitleContainer, CategoriesContainer } from './styles';
@@ -13,12 +13,15 @@ import DessertComponent from '../../components/Products/Dessert';
 import ModalComponent from '../../modal';
 import { searchStore } from '../../store/SearchStore';
 import { useSearch } from '../../hooks/useSearch';
+import { cartStore } from '../../store/CartStore';
 
 export default function Feed() {
   const { setProducts } = productStore();
   const { search, setSearch } = searchStore();
   const { categories } = useGenerateCategories();
   const { searchProduct } = useSearch();
+  const { productsArray } = cartStore();
+  console.log(productsArray);
 
   useEffect(() => {
     getProduct();

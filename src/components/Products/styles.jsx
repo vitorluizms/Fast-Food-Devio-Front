@@ -36,6 +36,10 @@ export const DescriptionContainer = styled.div`
   width: 160px;
   height: 130px;
   margin-top: -40px;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  /* overflow: hidden; */
+  text-align: center;
 
   border-radius: ${({ theme }) => theme.border.radius.medium};
   background: ${({ theme }) => theme.color.white};

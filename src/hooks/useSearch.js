@@ -4,7 +4,6 @@ import { refStore } from '../store/useRefScroll';
 export const useSearch = () => {
   const { setSearch } = searchStore();
   const { scrollTargets } = refStore();
-  console.log(scrollTargets);
 
   return {
     searchProduct: item => {
