@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { orderStore } from '../store/OrderStore';
+import { toast } from 'react-toastify';
 
 export async function getOrders() {
   let orders = [];
@@ -9,4 +9,10 @@ export async function getOrders() {
     .catch(element => console.log(element));
 
   return orders;
+}
+
+export async function postOrderApi(body) {
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/orders`, body);
+
+  return response.data;
 }

@@ -6,12 +6,13 @@ export const useFormatCurrency = value => {
   return {
     formattedValue: (value, setAmountPaidNumber) => {
       const numericValue = value.replace(/[^0-9]/g, '');
-      const a = new Intl.NumberFormat('pt-BR', {
+      const formattedValue = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL',
         minimumFractionDigits: 2,
       }).format(numericValue / 100);
-      setAmountPaid(a);
+
+      setAmountPaid(formattedValue);
       setAmountPaidNumber(numericValue);
     },
   };

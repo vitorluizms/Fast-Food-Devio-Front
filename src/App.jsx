@@ -1,4 +1,6 @@
+import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Feed from './pages/Feed';
@@ -14,6 +16,7 @@ function App() {
       <ResetStyles />
       <GlobalStyles />
       <ThemeProvider theme={Theme}>
+        <ToastContainer />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Feed />} />

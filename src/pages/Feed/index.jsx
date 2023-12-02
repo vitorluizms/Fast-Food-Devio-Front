@@ -30,11 +30,12 @@ export default function Feed() {
   const { search, setSearch } = searchStore();
   const { categories } = useGenerateCategories();
   const { searchProduct } = useSearch();
-  const { productsArray } = cartStore();
+  const { productsArray, setProductsArray } = cartStore();
   const navigate = useNavigate();
 
   useEffect(() => {
     getProduct();
+    setProductsArray([]);
   }, []);
 
   async function getProduct() {
