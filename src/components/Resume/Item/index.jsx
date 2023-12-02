@@ -6,9 +6,7 @@ import { useRemoveItem } from '../../../hooks/useRemoveItem';
 export function Item({ item }) {
   const { products } = productStore();
   const { removeItemFromCart } = useRemoveItem();
-  const product = products.filter(element => element.id === item.productId);
-  console.log(item);
-
+  const product = products?.filter(element => element.id === item.productId);
   return (
     <ItemContainer>
       <LeftSideItem>
