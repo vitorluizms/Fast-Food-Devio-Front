@@ -25,6 +25,10 @@ export const ContentContainer = styled.section`
 
   display: flex;
   gap: 50px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 export const StyledIcon = styled(FaWallet)`
@@ -191,6 +195,10 @@ export const RightSide = styled.section`
     font-size: ${({ theme }) => theme.fonts.size.default};
     color: ${({ theme }) => theme.color.black};
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const PaymentFormatContainer = styled.article`
@@ -244,4 +252,24 @@ export const InnerCircle = styled.article`
   border-radius: ${({ theme }) => theme.border.radius.circle};
   background-color: ${({ theme }) => theme.color.green};
   display: ${({ $isClicked }) => ($isClicked === false ? 'none' : '')};
+`;
+
+export const ButtonContainer = styled.section`
+  width: 85%;
+  height: 100%;
+  margin-top: 50px;
+
+  display: flex;
+  gap: 15px;
+
+  button {
+    width: 250px;
+    height: 50px;
+    border-radius: ${({ theme }) => theme.border.radius.big};
+
+    font-family: ${({ theme }) => theme.fonts.family.default};
+    font-weight: ${({ theme }) => theme.fonts.weight.bold};
+    font-size: ${({ theme }) => theme.fonts.size.default};
+    letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
+  }
 `;

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container } from '../Feed/styles';
+import { toast } from 'react-toastify';
+import { AddToCart, CancelProduct, Container } from '../Feed/styles';
 import {
   AmountPayContainer,
+  ButtonContainer,
   ClientInfo,
   CodeContainer,
   ContentContainer,
@@ -23,24 +25,64 @@ import {
 import Navbar from '../../components/NavBar/index';
 import { cartStore } from '../../store/CartStore';
 import { Item } from '../../components/Resume/Item';
-import { getOrders } from '../../services/ordersApi';
+import { getOrders, postOrderApi } from '../../services/ordersApi';
 import { orderStore } from '../../store/OrderStore';
 import PaymentForms from './PaymentForms';
+import { useFetchData } from '../../hooks/usePostOrder';
+import { paymentStore } from '../../store/PaymentStore';
+import { useValidatePayment } from '../../hooks/useValidatePayment';
 
 export default function PaymentPage() {
   const { productsArray, totalAmountPay, name, setName } = cartStore();
+  const { setType, isPaid } = paymentStore();
   const { orders, setOrders } = orderStore();
+  const { postOrder } = useFetchData();
+  const { validatePayment } = useValidatePayment();
   const navigate = useNavigate();
   const [paymentFormat, setPaymentFormat] = useState('');
+  const [amountPaidNumber, setAmountPaidNumber] = useState(0);
   const formats = [
     { type: 'debit', icon: <StyledCard />, name: 'Débito' },
     { type: 'credit', icon: <StyledCard />, name: 'Crédito' },
     { type: 'money', icon: <StyledMoney />, name: 'Dinheiro' },
   ];
 
+  const [state, setState] = useState({
+    number: '',
+    expiry: '',
+    cvc: '',
+    name: '',
+    focus: '',
+  });
+
   useEffect(() => {
     ordersApi();
+    setName('');
   }, []);
+
+  const handlePayment = async () => {
+    if (paymentFormat === 'credit' || paymentFormat === 'debit') {
+      validatePayment(state, paymentFormat);
+    } else if (paymentFormat === 'money') {
+      validatePayment({ amountPaid: amountPaidNumber, amountToPay: totalAmountPay });
+    }
+
+    if (isPaid === false) {
+      toast.error('Pagamento inválido!');
+    } else {
+      try {
+        const body = postOrder({ name, amountPay: totalAmountPay, products: productsArray });
+        console.log(body);
+        await postOrderApi(body);
+
+        toast.success('Pedido feito com sucesso!');
+        navigate('/');
+      } catch (error) {
+        console.log(error);
+        toast.error(`Pedido recusado por causa de: ${error.response.data}`);
+      }
+    }
+  };
 
   async function ordersApi() {
     setOrders(await getOrders());
@@ -99,13 +141,28 @@ export default function PaymentPage() {
                     {element.icon}
                     <h2>{element.name}</h2>
                   </div>
-                  <SelectTopping onClick={() => setPaymentFormat(element.type)}>
+                  <SelectTopping
+                    onClick={() => {
+                      setPaymentFormat(element.type);
+                      setType(element.type);
+                    }}
+                  >
                     <InnerCircle $isClicked={element.type === paymentFormat} />
                   </SelectTopping>
                 </PaymentSelector>
               ))}
-              <PaymentForms type={paymentFormat} />
+              <PaymentForms
+                type={paymentFormat}
+                state={state}
+                setState={setState}
+                amountPaidNumber={amountPaidNumber}
+                setAmountPaidNumber={setAmountPaidNumber}
+              />
             </PaymentFormatContainer>
+            <ButtonContainer>
+              <CancelProduct onClick={() => navigate('/')}>Cancelar</CancelProduct>
+              <AddToCart onClick={async () => handlePayment()}>Finalizar pedido</AddToCart>
+            </ButtonContainer>
           </RightSide>
         </ContentContainer>
       </Container>
