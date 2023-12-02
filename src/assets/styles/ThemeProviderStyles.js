@@ -8,6 +8,7 @@ const Theme = {
     lightYellow: '#FFEB70',
     lightGray: '#D6D6D6',
     gray: '#919191',
+    input: '#f4f4f4',
   },
   fonts: {
     family: {

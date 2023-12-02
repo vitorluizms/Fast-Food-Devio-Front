@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ProductListContainer = styled.article`
   width: 100%;
   height: auto;
+  padding: 15px;
 
   display: flex;
   gap: 50px;
@@ -11,10 +12,9 @@ export const ProductListContainer = styled.article`
 `;
 
 export const ProductContainer = styled.div`
-  width: 150px;
-  height: 230px;
-  padding: 8px;
-  background: transparent;
+  width: 160px;
+  height: 100%;
+
   cursor: pointer;
 
   &:hover {
@@ -28,7 +28,7 @@ export const WallpaperImage = styled.img`
   border-radius: ${({ theme }) => theme.border.radius.medium};
   box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.2);
 
-  position: ${({ $isModalOpen }) => ($isModalOpen === true ? 'none' : 'relative')};
+  position: ${({ $isModalOpen }) => ($isModalOpen === true ? 'static' : 'relative')};
   z-index: 1;
 `;
 
@@ -36,13 +36,17 @@ export const DescriptionContainer = styled.div`
   width: 160px;
   height: 130px;
   margin-top: -40px;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  /* overflow: hidden; */
+  text-align: center;
 
   border-radius: ${({ theme }) => theme.border.radius.medium};
   background: ${({ theme }) => theme.color.white};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  position: ${({ $isModalOpen }) => ($isModalOpen === true ? 'none' : 'relative')};
-  z-index: 2;
+  position: ${({ $isModalOpen }) => ($isModalOpen === true ? 'static' : 'relative')};
+  z-index: 1;
 
   display: flex;
   flex-direction: column;
