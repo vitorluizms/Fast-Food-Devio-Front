@@ -29,7 +29,7 @@ export default function ProductComponent({ product }) {
   }, [setScrollTargets]);
 
   return (
-    <ProductContainer onClick={() => handleClick(product)} ref={target}>
+    <ProductContainer onClick={() => handleClick(product)} ref={target} $isModalOpen={isModalOpen}>
       <WallpaperImage src={image[product.type]} alt="wallpaper-product" $isModalOpen={isModalOpen} />
       <DescriptionContainer $isModalOpen={isModalOpen}>
         <figure>

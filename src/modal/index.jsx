@@ -39,11 +39,17 @@ export default function ModalComponent() {
     setIsModalOpen(false);
     setCount(1);
     setClicked([]);
-    setObservation();
+    setObservation('');
   }
 
   function addObject() {
-    generateProductObject({ product: productSelected, toppings: clicked, observation, quantity: count });
+    generateProductObject({
+      product: productSelected,
+      toppings: clicked,
+      observation,
+      quantity: count,
+      amountPay: totalPayProduct,
+    });
     requestClose();
   }
 

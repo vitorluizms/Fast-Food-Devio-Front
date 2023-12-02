@@ -21,6 +21,7 @@ export const StyledModal = styled(Modal)`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  z-index: 5 !important;
 
   & > :first-child {
     width: 100%;

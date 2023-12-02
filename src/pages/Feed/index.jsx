@@ -14,6 +14,7 @@ import ModalComponent from '../../modal';
 import { searchStore } from '../../store/SearchStore';
 import { useSearch } from '../../hooks/useSearch';
 import { cartStore } from '../../store/CartStore';
+import { Resume } from '../../components/Resume';
 
 export default function Feed() {
   const { setProducts } = productStore();
@@ -79,6 +80,7 @@ export default function Feed() {
         <AccompanimentComponent />
         <DrinkComponent />
         <DessertComponent />
+        {productsArray.length > 0 ? <Resume /> : ''}
       </Container>
     </>
   );

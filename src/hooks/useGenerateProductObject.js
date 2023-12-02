@@ -1,10 +1,9 @@
 import { cartStore } from '../store/CartStore';
 
 export const useGenerateProductObject = () => {
-  const { setProductsArray, productsArray } = cartStore();
+  const { setProductsArray, productsArray, setAmountPay, totalAmountPay } = cartStore();
   return {
-    generateProductObject: ({ product, toppings, observation, quantity }) => {
-      console.log(toppings);
+    generateProductObject: ({ product, toppings, observation, quantity, amountPay }) => {
       const toppingsArrayString = toppings.map(element => `1x ${element.name}`);
       const arrayOfObjects = [...productsArray];
 
@@ -13,10 +12,12 @@ export const useGenerateProductObject = () => {
         toppings: toppingsArrayString.join(', '),
         observation,
         quantity,
+        amountPay,
       };
 
       arrayOfObjects.push(body);
       setProductsArray(arrayOfObjects);
+      setAmountPay(totalAmountPay + amountPay);
     },
   };
 };
