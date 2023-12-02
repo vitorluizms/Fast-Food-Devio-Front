@@ -35,7 +35,7 @@ export default function ProductComponent({ product }) {
         <figure>
           <img src={product.image} alt={product.name} />
         </figure>
-        <div>
+        <div style={{ height: '50px' }}>
           <h3>{product.name}</h3>
           <p>{descriptionArray[0]}</p>
         </div>

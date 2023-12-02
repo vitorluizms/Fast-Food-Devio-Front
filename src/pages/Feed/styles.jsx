@@ -78,3 +78,51 @@ export const CategoriesContainer = styled.article`
   gap: 30px;
   overflow: auto;
 `;
+
+export const ButtonContainer = styled.section`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+
+  button {
+    width: 250px;
+    height: 50px;
+    border-radius: ${({ theme }) => theme.border.radius.big};
+
+    font-family: ${({ theme }) => theme.fonts.family.default};
+    font-weight: ${({ theme }) => theme.fonts.weight.bold};
+    font-size: ${({ theme }) => theme.fonts.size.default};
+    letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
+  }
+`;
+
+export const AddToCart = styled.button`
+  vertical-align: center;
+  text-align: center;
+  border: none;
+
+  background-color: ${({ theme, $isDisabled }) => ($isDisabled ? theme.color.lightGray : theme.color.darkGreen)};
+  color: ${({ theme }) => theme.color.white};
+
+  &:hover {
+    background-color: ${({ theme, $isDisabled }) => ($isDisabled ? '' : theme.color.green)};
+    cursor: ${({ $isDisabled }) => ($isDisabled ? 'default' : 'pointer')};
+  }
+`;
+
+export const CancelProduct = styled.button`
+  vertical-align: center;
+  text-align: center;
+
+  background-color: transparent;
+  border: 2px solid ${({ theme, $isDisabled }) => ($isDisabled ? theme.color.lightGray : theme.color.darkGreen)};
+  color: ${({ theme, $isDisabled }) => ($isDisabled ? theme.color.lightGray : theme.color.darkGreen)};
+
+  &:hover {
+    background-color: ${({ theme, $isDisabled }) => ($isDisabled ? '' : theme.color.lightGray)};
+    cursor: ${({ $isDisabled }) => ($isDisabled ? 'default' : 'pointer')};
+  }
+`;

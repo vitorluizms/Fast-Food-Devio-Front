@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react';
 import Navbar from '../../components/NavBar';
 import { productStore } from '../../store/ProductsStore';
-import { NavCategoriesContainer, Container, TitleContainer, CategoriesContainer } from './styles';
+import {
+  NavCategoriesContainer,
+  Container,
+  TitleContainer,
+  CategoriesContainer,
+  ButtonContainer,
+  CancelProduct,
+  AddToCart,
+} from './styles';
 import Category from '../../components/Categories';
 import { useGenerateCategories } from '../../hooks/useGenerateCategories';
 import CombosComponent from '../../components/Products/Combo';
@@ -22,7 +30,6 @@ export default function Feed() {
   const { categories } = useGenerateCategories();
   const { searchProduct } = useSearch();
   const { productsArray } = cartStore();
-  console.log(productsArray);
 
   useEffect(() => {
     getProduct();
@@ -81,6 +88,14 @@ export default function Feed() {
         <DrinkComponent />
         <DessertComponent />
         {productsArray.length > 0 ? <Resume /> : ''}
+        <ButtonContainer>
+          <CancelProduct disabled={productsArray.length === 0} $isDisabled={productsArray.length === 0}>
+            Cancelar
+          </CancelProduct>
+          <AddToCart disabled={productsArray.length === 0} $isDisabled={productsArray.length === 0}>
+            Finalizar pedido
+          </AddToCart>
+        </ButtonContainer>
       </Container>
     </>
   );

@@ -257,7 +257,7 @@ export const CancelProduct = styled.button`
   text-align: center;
 
   background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.color.darkGreen};
+  border: 2px solid ${({ theme }) => theme.color.darkGreen};
   color: ${({ theme }) => theme.color.darkGreen};
 
   &:hover {
