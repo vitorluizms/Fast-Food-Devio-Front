@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/NavBar';
 import { productStore } from '../../store/ProductsStore';
 import {
@@ -30,6 +31,7 @@ export default function Feed() {
   const { categories } = useGenerateCategories();
   const { searchProduct } = useSearch();
   const { productsArray } = cartStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProduct();
@@ -92,7 +94,11 @@ export default function Feed() {
           <CancelProduct disabled={productsArray.length === 0} $isDisabled={productsArray.length === 0}>
             Cancelar
           </CancelProduct>
-          <AddToCart disabled={productsArray.length === 0} $isDisabled={productsArray.length === 0}>
+          <AddToCart
+            disabled={productsArray.length === 0}
+            $isDisabled={productsArray.length === 0}
+            onClick={() => navigate('/payment')}
+          >
             Finalizar pedido
           </AddToCart>
         </ButtonContainer>

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
 
 export const RemoveItem = styled(AiOutlineClose)`
-  width: 30px;
-  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
   background-color: #c2291e;
 
   color: ${({ theme }) => theme.color.white};
