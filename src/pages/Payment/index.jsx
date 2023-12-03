@@ -87,6 +87,7 @@ export default function PaymentPage() {
       toast.error('Pagamento inválido!');
     } else {
       try {
+        setIsLoadingModalOpen(true);
         const body = postOrder({ name, amountPay: totalAmountPay, products: productsArray });
         await postOrderApi(body);
 
@@ -97,6 +98,7 @@ export default function PaymentPage() {
       } catch (error) {
         toast.error(`Pedido recusado por causa de: ${error.response.data}`);
       }
+      setIsLoadingModalOpen(false);
     }
   };
 

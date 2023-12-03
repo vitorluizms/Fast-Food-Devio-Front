@@ -34,7 +34,7 @@ export default function Prepared({ order }) {
 
   if (order.isFinished === true) {
     return (
-      <OrderContainer>
+      <OrderContainer $type="prepared">
         <OrderDescription>
           <figure>
             <img src={order.products[0].product.image} alt={order.products[0].name} />

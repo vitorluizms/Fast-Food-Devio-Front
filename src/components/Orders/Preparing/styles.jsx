@@ -10,7 +10,7 @@ export const OrderContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: ${({ theme }) => theme.border.radius.medium};
-
+  border: ${({ theme, $type }) => ($type === 'prepared' ? `1px solid ${theme.color.green}` : 'none')};
   figure {
     width: 50px;
     height: 55px;

@@ -5,7 +5,7 @@ export const KitchenContainer = styled.main`
   min-height: calc(100dvh - 50px);
   min-height: calc(100dvh - 50px);
   height: 100%;
-  padding: 5% 8% 5% 8%;
+  padding: 20px;
   gap: 40px;
 
   display: flex;
@@ -46,6 +46,10 @@ export const OrdersContainer = styled.article`
   gap: 20px;
 
   background-color: transparent;
+
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const PreparedContainer = styled.section`

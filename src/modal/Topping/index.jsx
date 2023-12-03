@@ -7,6 +7,7 @@ export default function Topping({ product, clicked, setClicked }) {
   function handleClick() {
     toggleTopping(product, clicked, setClicked);
   }
+  console.log(clicked);
 
   return (
     <Container>
@@ -24,6 +25,7 @@ export default function Topping({ product, clicked, setClicked }) {
         <SelectTopping onClick={() => handleClick()}>
           <InnerCircle
             $isClicked={clicked.some(object => {
+              console.log(object.id === product.id);
               return object.id === product.id;
             })}
           />
