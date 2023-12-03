@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const KitchenContainer = styled.main`
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100dvh - 50px);
+  min-height: calc(100dvh - 50px);
   height: 100%;
   padding: 5% 8% 5% 8%;
+  gap: 40px;
 
   display: flex;
-  gap: 50px;
 
   @media (max-width: 450px) {
     display: flex;
@@ -17,12 +17,18 @@ export const KitchenContainer = styled.main`
 `;
 
 export const PreparingContainer = styled.section`
-  width: 45%;
+  width: 50%;
   height: 100%;
+  min-height: 70dvh;
 
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-right: 2px solid ${({ theme }) => theme.color.gray};
+
+  @media (max-width: 500px) {
+    border: none;
+  }
 `;
 
 export const Title = styled.h1`
@@ -40,4 +46,14 @@ export const OrdersContainer = styled.article`
   gap: 20px;
 
   background-color: transparent;
+`;
+
+export const PreparedContainer = styled.section`
+  width: 50%;
+  height: 100%;
+  min-height: 60dvh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;

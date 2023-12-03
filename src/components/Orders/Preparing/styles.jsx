@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { IoMdClose, IoIosCheckmark } from 'react-icons/io';
 
 export const OrderContainer = styled.div`
-  width: 300px;
-  height: 70px;
+  width: 350px;
+  height: 80px;
   padding: 10px;
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -29,6 +29,10 @@ export const OrderContainer = styled.div`
       object-fit: fill;
       object-position: 100% 0;
     }
+  }
+
+  @media (max-width: 450px) {
+    width: 300px;
   }
 `;
 
