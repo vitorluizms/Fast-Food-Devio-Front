@@ -11,7 +11,7 @@ export const useSelectTopping = () => {
           return product.id === object.id;
         })
       ) {
-        setTotalPayProduct(product.price, 'subtraction');
+        setTotalPayProduct(product.price, 'substraction');
         array = array.filter(element => element !== product);
       } else {
         setTotalPayProduct(product.price, 'sum');
