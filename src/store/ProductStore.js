@@ -7,7 +7,7 @@ export const itemStore = create(set => {
     setProduct: item => set(state => ({ productSelected: item, totalPayProduct: item.price })),
     setTotalPayProduct: (value, type) =>
       set(state => ({
-        totalPayProduct: type === 'subtraction' ? state.totalPayProduct - value : state.totalPayProduct + value,
+        totalPayProduct: type === 'substraction' ? state.totalPayProduct - value : state.totalPayProduct + value,
       })),
-  };
+  };  
 });
