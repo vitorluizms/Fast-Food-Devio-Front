@@ -35,11 +35,10 @@ export const WallpaperImage = styled.img`
 export const DescriptionContainer = styled.div`
   width: 160px;
   height: 130px;
+  max-height: 130px;
   margin-top: -40px;
-  text-overflow: ellipsis;
-  white-space: wrap;
-  /* overflow: hidden; */
   text-align: center;
+  /* overflow: scroll; */
 
   border-radius: ${({ theme }) => theme.border.radius.medium};
   background: ${({ theme }) => theme.color.white};
@@ -57,6 +56,7 @@ export const DescriptionContainer = styled.div`
     height: 70px;
     background: transparent;
     margin-top: -40px;
+    z-index: 5;
   }
 
   h3 {
@@ -64,6 +64,9 @@ export const DescriptionContainer = styled.div`
     font-weight: ${({ theme }) => theme.fonts.weight.bold};
     font-size: ${({ theme }) => theme.fonts.size.small};
     color: ${({ theme }) => theme.color.black};
+
+    text-overflow: ellipsis;
+    white-space: wrap;
   }
 
   p {
@@ -72,6 +75,9 @@ export const DescriptionContainer = styled.div`
     font-size: ${({ theme }) => theme.fonts.size.small};
     color: ${({ theme }) => theme.color.black};
     margin-bottom: 25px;
+
+    text-overflow: ellipsis;
+    white-space: wrap;
   }
 
   div {
@@ -79,5 +85,6 @@ export const DescriptionContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    overflow: auto;
   }
 `;

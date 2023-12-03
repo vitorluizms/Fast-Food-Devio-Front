@@ -1,6 +1,7 @@
 const Theme = {
   color: {
     white: '#ffffff',
+    lightGreen: '#98FB98',
     green: '#125C13',
     darkGreen: '#0C400D',
     black: '#121212',
@@ -9,6 +10,8 @@ const Theme = {
     lightGray: '#D6D6D6',
     gray: '#919191',
     input: '#f4f4f4',
+    lightRed: '#FFB6C1',
+    red: '#e30000',
   },
   fonts: {
     family: {

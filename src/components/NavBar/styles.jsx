@@ -49,7 +49,7 @@ export const OrderButton = styled.button`
   width: 80px;
   height: 55%;
 
-  background-color: ${({ theme, $state }) => ($state === 'orders' ? theme.color.darkGreen : 'transparent')};
+  background-color: ${({ theme, $state }) => ($state === '/' ? theme.color.darkGreen : 'transparent')};
   border: none;
   border-radius: ${({ theme }) => theme.border.radius.small};
   cursor: pointer;
@@ -69,7 +69,7 @@ export const KitchenButton = styled.button`
   width: 80px;
   height: 55%;
 
-  background-color: ${({ theme, $state }) => ($state === 'kitchen' ? theme.color.darkGreen : 'transparent')};
+  background-color: ${({ theme, $state }) => ($state === '/kitchen' ? theme.color.darkGreen : 'transparent')};
   border: none;
   border-radius: ${({ theme }) => theme.border.radius.small};
   cursor: pointer;
@@ -88,7 +88,7 @@ export const PickUpButton = styled.button`
   width: 80px;
   height: 55%;
 
-  background-color: ${({ theme, $state }) => ($state === 'pickUp' ? theme.color.darkGreen : 'transparent')};
+  background-color: ${({ theme, $state }) => ($state === '/pickUp' ? theme.color.darkGreen : 'transparent')};
   border: none;
   border-radius: ${({ theme }) => theme.border.radius.small};
   cursor: pointer;

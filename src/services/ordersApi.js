@@ -16,3 +16,19 @@ export async function postOrderApi(body) {
 
   return response.data;
 }
+
+export async function deleteOrder(id) {
+  const response = await axios.delete(`${import.meta.env.VITE_API_URL}/orders/${id}`);
+
+  return;
+}
+
+export async function finishOrder(id) {
+  await axios.patch(`${import.meta.env.VITE_API_URL}/orders/${id}/finish`);
+  return;
+}
+
+export async function deliverOrder(id) {
+  await axios.patch(`${import.meta.env.VITE_API_URL}/orders/${id}/delivered`);
+  return;
+}
