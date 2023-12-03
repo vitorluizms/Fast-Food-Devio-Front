@@ -10,15 +10,19 @@ import {
 } from './styles';
 import { deleteOrder, finishOrder, getOrders } from '../../../services/ordersApi';
 import { orderStore } from '../../../store/OrderStore';
+import { modalStore } from '../../../store/ModalStore';
 
 export default function Order({ order }) {
+  const { setIsLoadingModalOpen } = modalStore();
   const { setOrders } = orderStore();
   const productsArray = order.products.map(element => `${element.quantity}x ${element.product.name}`);
   const [isLoading, setLoading] = useState(false);
 
   async function handleClick(type) {
+    console.log('s');
     try {
       setLoading(true);
+      setIsLoadingModalOpen(true);
       if (type === 'delete') {
         await deleteOrder(order.id);
         toast('Pedido cancelado!');
@@ -27,7 +31,6 @@ export default function Order({ order }) {
         toast('Pedido finalizado!');
       }
       setOrders(await getOrders());
-      setLoading(false);
     } catch (err) {
       console.log(err);
       if (err.response?.data.length === 0) {
@@ -36,6 +39,8 @@ export default function Order({ order }) {
         toast.error(err.response.data);
       }
     }
+    setLoading(false);
+    setIsLoadingModalOpen(false);
   }
   if (order.isFinished === false) {
     return (

@@ -10,14 +10,17 @@ import {
 
 import { deliverOrder, getOrders } from '../../../services/ordersApi';
 import { orderStore } from '../../../store/OrderStore';
+import { modalStore } from '../../../store/ModalStore';
 
 export default function Prepared({ order }) {
+  const { setIsLoadingModalOpen } = modalStore();
   const { setOrders } = orderStore();
   const productsArray = order.products.map(element => `${element.quantity}x ${element.product.name}`);
   const [isLoading, setLoading] = useState(false);
 
   async function handleClick() {
     try {
+      setIsLoadingModalOpen(true);
       setLoading(true);
       await deliverOrder(order.id);
       setOrders(await getOrders());
@@ -26,6 +29,7 @@ export default function Prepared({ order }) {
     } catch (err) {
       toast(err.response.data);
     }
+    setIsLoadingModalOpen(false);
   }
 
   if (order.isFinished === true) {
