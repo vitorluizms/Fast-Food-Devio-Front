@@ -34,12 +34,11 @@ export default function Feed() {
   const { search, setSearch } = searchStore();
   const { categories } = useGenerateCategories();
   const { searchProduct } = useSearch();
-  const { productsArray, setProductsArray } = cartStore();
+  const { productsArray } = cartStore();
   const navigate = useNavigate();
 
   useEffect(() => {
     getProduct();
-    setProductsArray([]);
   }, []);
 
   async function getProduct() {

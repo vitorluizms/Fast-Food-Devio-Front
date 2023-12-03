@@ -35,7 +35,7 @@ import { modalStore } from '../../store/ModalStore';
 import LoadingModal from '../../modal/LoadingModal';
 
 export default function PaymentPage() {
-  const { productsArray, totalAmountPay, name, setName, setCode, code } = cartStore();
+  const { productsArray, totalAmountPay, name, setName, setCode, code, setAmountPay, setProductsArray } = cartStore();
   const { setType } = paymentStore();
   const { setOrders } = orderStore();
   const { setIsLoadingModalOpen } = modalStore();
@@ -90,6 +90,8 @@ export default function PaymentPage() {
         const body = postOrder({ name, amountPay: totalAmountPay, products: productsArray });
         await postOrderApi(body);
 
+        setProductsArray([]);
+        setAmountPay(0);
         toast.success('Pedido feito com sucesso!');
         navigate('/');
       } catch (error) {

@@ -9,6 +9,7 @@ import ResetStyles from './assets/styles/ResetStyle';
 import GlobalStyles from './assets/styles/GlobalStyles';
 import Kitchen from './pages/Kitchen';
 import PaymentPage from './pages/Payment';
+import PickUp from './pages/PickUp';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Feed />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/kitchen" element={<Kitchen />} />
+            <Route path="/pickup" element={<PickUp />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
