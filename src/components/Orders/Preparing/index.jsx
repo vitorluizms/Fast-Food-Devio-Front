@@ -19,7 +19,6 @@ export default function Order({ order }) {
   const [isLoading, setLoading] = useState(false);
 
   async function handleClick(type) {
-    console.log('s');
     try {
       setLoading(true);
       setIsLoadingModalOpen(true);
@@ -32,7 +31,6 @@ export default function Order({ order }) {
       }
       setOrders(await getOrders());
     } catch (err) {
-      console.log(err);
       if (err.response?.data.length === 0) {
         toast.error('Houve um erro');
       } else {

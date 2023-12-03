@@ -25,17 +25,20 @@ import {
 import Navbar from '../../components/NavBar/index';
 import { cartStore } from '../../store/CartStore';
 import { Item } from '../../components/Resume/Item';
-import { getOrders, postOrderApi } from '../../services/ordersApi';
+import { getLastOrder, getOrders, postOrderApi } from '../../services/ordersApi';
 import { orderStore } from '../../store/OrderStore';
 import PaymentForms from './PaymentForms';
 import { useFetchData } from '../../hooks/usePostOrder';
 import { paymentStore } from '../../store/PaymentStore';
 import { useValidatePayment } from '../../hooks/useValidatePayment';
+import { modalStore } from '../../store/ModalStore';
+import LoadingModal from '../../modal/LoadingModal';
 
 export default function PaymentPage() {
-  const { productsArray, totalAmountPay, name, setName } = cartStore();
-  const { setType, isPaid } = paymentStore();
-  const { orders, setOrders } = orderStore();
+  const { productsArray, totalAmountPay, name, setName, setCode, code } = cartStore();
+  const { setType } = paymentStore();
+  const { setOrders } = orderStore();
+  const { setIsLoadingModalOpen } = modalStore();
   const { postOrder } = useFetchData();
   const { validatePayment } = useValidatePayment();
   const navigate = useNavigate();
@@ -46,7 +49,6 @@ export default function PaymentPage() {
     { type: 'credit', icon: <StyledCard />, name: 'Crédito' },
     { type: 'money', icon: <StyledMoney />, name: 'Dinheiro' },
   ];
-
   const [state, setState] = useState({
     number: '',
     expiry: '',
@@ -55,30 +57,42 @@ export default function PaymentPage() {
     focus: '',
   });
 
+  async function lastOrder() {
+    try {
+      const order = await getLastOrder();
+
+      setCode(order.id);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  }
+
   useEffect(() => {
+    setIsLoadingModalOpen(true);
+    lastOrder();
     ordersApi();
     setName('');
+    setIsLoadingModalOpen(false);
   }, []);
 
   const handlePayment = async () => {
+    let paid = false;
     if (paymentFormat === 'credit' || paymentFormat === 'debit') {
-      validatePayment(state, paymentFormat);
+      paid = validatePayment(state, paymentFormat);
     } else if (paymentFormat === 'money') {
-      validatePayment({ amountPaid: amountPaidNumber, amountToPay: totalAmountPay });
+      paid = validatePayment({ amountPaid: amountPaidNumber, amountToPay: totalAmountPay });
     }
-
-    if (isPaid === false) {
+    console.log(paid);
+    if (paid === false) {
       toast.error('Pagamento inválido!');
     } else {
       try {
         const body = postOrder({ name, amountPay: totalAmountPay, products: productsArray });
-        console.log(body);
         await postOrderApi(body);
 
         toast.success('Pedido feito com sucesso!');
         navigate('/');
       } catch (error) {
-        console.log(error);
         toast.error(`Pedido recusado por causa de: ${error.response.data}`);
       }
     }
@@ -92,6 +106,7 @@ export default function PaymentPage() {
     <>
       <Navbar />
       <Container>
+        <LoadingModal />
         <TitleContainer>
           <StyledIcon />
           <h1>Pagamento</h1>
@@ -128,7 +143,7 @@ export default function PaymentPage() {
               </NameInputContainer>
               <CodeContainer>
                 <h2>Código</h2>
-                <div>{orders.length === 0 ? 1 : orders[orders.length - 1].id + 1}</div>
+                <div>{!code ? 0 : code + 1}</div>
               </CodeContainer>
             </ClientInfo>
           </PaymentResume>

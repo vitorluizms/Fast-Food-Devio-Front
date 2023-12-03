@@ -12,20 +12,13 @@ export const StyledModal = styled(ReactModal)`
   transform: translate(-50%, -50%);
 
   border-radius: ${({ theme }) => theme.border.radius.medium};
+  border: none;
   background-color: transparent;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  h1 {
-    font-family: ${({ theme }) => theme.fonts.family.default};
-    font-weight: ${({ theme }) => theme.fonts.weight.bold};
-    font-size: ${({ theme }) => theme.fonts.size.bigger};
-    letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
-    color: ${({ theme }) => theme.color.black};
-  }
 `;
 
 export const StyledSpinner = styled(TailSpin)`
@@ -33,4 +26,5 @@ export const StyledSpinner = styled(TailSpin)`
   height: 60px;
 
   color: #4fa94d;
+  border: none;
 `;

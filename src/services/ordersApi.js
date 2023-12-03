@@ -32,3 +32,8 @@ export async function deliverOrder(id) {
   await axios.patch(`${import.meta.env.VITE_API_URL}/orders/${id}/delivered`);
   return;
 }
+
+export async function getLastOrder() {
+  const order = await axios.get(`${import.meta.env.VITE_API_URL}/orders?last=true`);
+  return order.data;
+}

@@ -8,7 +8,6 @@ export const useSelectTopping = () => {
       let array = [...clicked];
       if (
         array.some(object => {
-          console.log(object);
           return product.id === object.id;
         })
       ) {

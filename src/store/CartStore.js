@@ -4,6 +4,7 @@ export const cartStore = create(set => {
   return {
     amountPaid: 0,
     name: '',
+    code: 0,
     totalAmountPay: 0,
     productsArray: [],
     cart: [],
@@ -12,5 +13,6 @@ export const cartStore = create(set => {
     setAmountPay: item => set(stater => ({ totalAmountPay: item })),
     setName: name => set(state => ({ name: name })),
     setAmountPaid: value => set(state => ({ amountPaid: value })),
+    setCode: code => set(state => ({ code })),
   };
 });

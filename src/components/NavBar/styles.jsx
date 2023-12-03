@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { PiHamburger } from 'react-icons/pi';
+import { IoMdMenu } from 'react-icons/io';
 
 export const Container = styled.header`
   width: 100%;
@@ -63,6 +64,10 @@ export const OrderButton = styled.button`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const KitchenButton = styled.button`
@@ -83,6 +88,10 @@ export const KitchenButton = styled.button`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 export const PickUpButton = styled.button`
   width: 80px;
@@ -101,5 +110,20 @@ export const PickUpButton = styled.button`
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export const StyledMenu = styled(IoMdMenu)`
+  font-size: 25px;
+  color: ${({ theme }) => theme.color.white};
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 500px) {
+    display: flex;
   }
 `;
