@@ -14,6 +14,7 @@ export const useGenerateProductObject = () => {
         quantity,
         amountPay,
       };
+      console.log(body);
 
       arrayOfObjects.push(body);
       setProductsArray(arrayOfObjects);

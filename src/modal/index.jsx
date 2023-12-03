@@ -32,6 +32,7 @@ export default function ModalComponent() {
   const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([]);
   const [observation, setObservation] = useState('');
+  console.log(observation);
 
   const { generateProductObject } = useGenerateProductObject();
 

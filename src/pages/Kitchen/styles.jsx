@@ -5,13 +5,14 @@ export const KitchenContainer = styled.main`
   min-height: calc(100dvh - 50px);
   min-height: calc(100dvh - 50px);
   height: 100%;
-  padding: 20px;
+  padding: 60px;
   gap: 40px;
 
   display: flex;
 
-  @media (max-width: 450px) {
+  @media (max-width: 600px) {
     display: flex;
+    padding: 20px;
     flex-direction: column;
   }
 `;
@@ -26,7 +27,8 @@ export const PreparingContainer = styled.section`
   gap: 20px;
   border-right: 2px solid ${({ theme }) => theme.color.gray};
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
+    min-height: 100%;
     border: none;
   }
 `;
