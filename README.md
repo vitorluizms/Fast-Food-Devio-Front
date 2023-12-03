@@ -38,15 +38,14 @@ Para a construção do projeto foi utilizado as seguintes tecnologias:
 
 - Javascript (ECMAScript 6);
 - Node: v18.16.1;
-- Express (Framework de Node.js): v4.18.2;
-- Prisma (ORM): v5.6.0;
-- PostgreSQL (Banco de dados);
-- Jest (Criação de testes): v29.7.0;
-- Supertest (Simulador de solicitações HTTP): v6.3.3;
+- React: v18.2.0;
+- React hooks and libs;
+- ESLint;
+- Husky;
+- Prettier;
+- Axios: v1.6.2;
+- Vite: v5.0.0;
 - GitHub (versionamento de código);
-- Joi (validação de campos): v17.11.0;
-- Dotenv/ Dotenv-cli (Carregar variáveis de ambiente): v16.3.1 e 7.3.0;
-- Nodemon (Reinicialização automática do servidor): v3.0.1.
 
 ## 📏 Padronização
 
