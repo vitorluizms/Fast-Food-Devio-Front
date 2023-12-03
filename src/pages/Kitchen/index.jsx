@@ -1,14 +1,22 @@
 import React, { useEffect } from 'react';
-import { KitchenContainer, PreparingContainer, Title } from './styles';
+import { toast } from 'react-toastify';
+import { KitchenContainer, OrdersContainer, PreparingContainer, Title } from './styles';
 import Navbar from '../../components/NavBar';
 import { orderStore } from '../../store/OrderStore';
 import { getOrders } from '../../services/ordersApi';
+import Order from '../../components/Orders';
 
 export default function Kitchen() {
-  const { orders } = orderStore();
+  const { orders, setOrders } = orderStore();
+  console.log(orders);
 
   async function get() {
-    await getOrders();
+    try {
+      const response = await getOrders();
+      setOrders(response);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   }
 
   useEffect(() => {
@@ -22,7 +30,11 @@ export default function Kitchen() {
           <article>
             <Title>Preparando:</Title>
           </article>
-          <article></article>
+          <OrdersContainer>
+            {orders.map(element => (
+              <Order key={element.id} order={element} />
+            ))}
+          </OrdersContainer>
         </PreparingContainer>
       </KitchenContainer>
     </>

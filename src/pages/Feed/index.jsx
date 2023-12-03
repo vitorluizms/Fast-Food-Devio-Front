@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Navbar from '../../components/NavBar';
 import { productStore } from '../../store/ProductsStore';
 import {
@@ -39,8 +40,15 @@ export default function Feed() {
   }, []);
 
   async function getProduct() {
-    const response = await getProducts();
-    setProducts(response.data);
+    try {
+      const response = await getProducts();
+      setProducts(response.data);
+    } catch (err) {
+      if (err.message === 'Request aborted') {
+        console.log(err.message);
+        toast.error('O servidor está sendo reiniciado, aguarde alguns instantes!');
+      }
+    }
   }
 
   function handleSearch(e) {
