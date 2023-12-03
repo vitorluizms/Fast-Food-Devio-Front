@@ -6,7 +6,6 @@ import { AmountPay, ListContainer } from './styles';
 
 export function Resume() {
   const { productsArray, totalAmountPay } = cartStore();
-  console.log(productsArray);
 
   return (
     <ResumeContainer>

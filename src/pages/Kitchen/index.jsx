@@ -6,18 +6,23 @@ import { orderStore } from '../../store/OrderStore';
 import { getOrders } from '../../services/ordersApi';
 import Order from '../../components/Orders/Preparing';
 import Prepared from '../../components/Orders/Prepared';
+import LoadingModal from '../../modal/LoadingModal';
+import { modalStore } from '../../store/ModalStore';
 
 export default function Kitchen() {
   const { orders, setOrders } = orderStore();
-  console.log(orders);
+  const { setIsLoadingModalOpen } = modalStore();
 
   async function get() {
     try {
+      setIsLoadingModalOpen(true);
+
       const response = await getOrders();
       setOrders(response);
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error('O servidor está sendo iniciado, aguarde alguns instantes!');
     }
+    setIsLoadingModalOpen(false);
   }
 
   useEffect(() => {
@@ -27,6 +32,7 @@ export default function Kitchen() {
     <>
       <Navbar />
       <KitchenContainer>
+        <LoadingModal />
         <PreparingContainer>
           <article>
             <Title>Preparando:</Title>

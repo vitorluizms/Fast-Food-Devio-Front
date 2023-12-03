@@ -25,30 +25,33 @@ import { searchStore } from '../../store/SearchStore';
 import { useSearch } from '../../hooks/useSearch';
 import { cartStore } from '../../store/CartStore';
 import { Resume } from '../../components/Resume';
+import { modalStore } from '../../store/ModalStore';
+import LoadingModal from '../../modal/LoadingModal';
 
 export default function Feed() {
+  const { setIsLoadingModalOpen } = modalStore();
   const { setProducts } = productStore();
   const { search, setSearch } = searchStore();
   const { categories } = useGenerateCategories();
   const { searchProduct } = useSearch();
-  const { productsArray, setProductsArray } = cartStore();
+  const { productsArray } = cartStore();
   const navigate = useNavigate();
 
   useEffect(() => {
     getProduct();
-    setProductsArray([]);
   }, []);
 
   async function getProduct() {
+    setIsLoadingModalOpen(true);
     try {
       const response = await getProducts();
       setProducts(response.data);
     } catch (err) {
       if (err.message === 'Request aborted') {
-        console.log(err.message);
         toast.error('O servidor está sendo reiniciado, aguarde alguns instantes!');
       }
     }
+    setIsLoadingModalOpen(false);
   }
 
   function handleSearch(e) {
@@ -61,6 +64,7 @@ export default function Feed() {
     <>
       <Navbar />
       <Container>
+        <LoadingModal />
         <ModalComponent />
         <TitleContainer>
           <h1>Seja bem vindo!</h1>

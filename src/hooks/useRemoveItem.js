@@ -7,7 +7,6 @@ export const useRemoveItem = () => {
     removeItemFromCart: product => {
       const productsArrayFiltered = productsArray.filter(element => element.productId !== product.productId);
       setProductsArray(productsArrayFiltered);
-      console.log(product);
       setAmountPay(totalAmountPay - product.amountPay);
     },
   };

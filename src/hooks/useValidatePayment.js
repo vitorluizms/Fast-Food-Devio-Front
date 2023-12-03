@@ -6,29 +6,30 @@ export const useValidatePayment = () => {
   return {
     validatePayment: (body, type) => {
       let validate = false;
-      if (type === 'credit' || type === 'debit') validateCardFormat(body, setIsPaid, validate);
-      else validateMoneyFormat(body, setIsPaid, validate);
+      if (type === 'credit' || type === 'debit') validate = validateCardFormat(body, setIsPaid);
+      else validate = validateMoneyFormat(body, setIsPaid);
 
       return validate;
     },
   };
 };
 
-const validateCardFormat = (state, setIsPaid, validate) => {
-  if (state.number.length !== 19 || state.name.length === 0 || state.cvc.length !== 3 || state.expiry.length !== 5)
+const validateCardFormat = (state, setIsPaid) => {
+  if (state.number.length !== 19 || state.name.length === 0 || state.cvc.length !== 3 || state.expiry.length !== 5) {
     setIsPaid(false);
-  else {
+    return false;
+  } else {
     setIsPaid(true);
-    validate = true;
+    return true;
   }
 };
 
-const validateMoneyFormat = (body, setIsPaid, validate) => {
-  console.log(body);
+const validateMoneyFormat = (body, setIsPaid) => {
   if (Number(body.amountPaid) < body.amountToPay) {
     setIsPaid(false);
+    return false;
   } else {
     setIsPaid(true);
-    validate = true;
+    return true;
   }
 };
