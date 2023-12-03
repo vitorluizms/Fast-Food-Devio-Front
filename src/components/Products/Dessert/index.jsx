@@ -18,7 +18,7 @@ export default function DessertComponent() {
   return (
     <ProductSection ref={target}>
       <article>
-        <h2>Hambúrgueres</h2>
+        <h2>Sobremesas</h2>
       </article>
       <ProductListContainer>
         {products?.map(element => {
