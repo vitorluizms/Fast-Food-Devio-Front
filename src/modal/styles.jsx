@@ -4,6 +4,7 @@ import { IoCloseSharp } from 'react-icons/io5';
 
 export const StyledModal = styled(Modal)`
   width: 60%;
+  min-width: 300px;
   max-height: calc(100vh - 40px);
   height: auto !important;
 
@@ -74,6 +75,12 @@ export const StyledModal = styled(Modal)`
       font-weight: ${({ theme }) => theme.fonts.weight.semiBold};
     }
   }
+
+  @media (max-width: 500px) {
+    align-items: center;
+    width: 90%;
+    padding: 20px;
+  }
 `;
 
 export const StyledClose = styled(IoCloseSharp)`
@@ -99,6 +106,12 @@ export const ProductDescription = styled.section`
     letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
     color: ${({ theme }) => theme.color.black};
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 `;
 
 export const ImageContainer = styled.article`
@@ -107,6 +120,11 @@ export const ImageContainer = styled.article`
 
   display: flex;
   gap: 70px;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 0px;
+  }
 `;
 
 export const ToppingSection = styled.section`
@@ -205,6 +223,12 @@ export const ProductListContainer = styled.article`
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 500px) {
+    h4 {
+      font-size: ${({ theme }) => theme.fonts.size.small};
+    }
+  }
 `;
 
 export const AmountPayContainer = styled.article`
@@ -238,21 +262,35 @@ export const ButtonContainer = styled.section`
     letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
     cursor: pointer;
   }
+
+  @media (max-width: 500px) {
+    font-size: ${({ theme }) => theme.fonts.size.small};
+    button {
+      max-width: 120px;
+    }
+  }
 `;
 
 export const AddToCart = styled.button`
+  width: 250px;
   vertical-align: center;
   text-align: center;
 
   background-color: ${({ theme }) => theme.color.darkGreen};
   color: ${({ theme }) => theme.color.white};
+  border: none;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.green};
   }
+
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const CancelProduct = styled.button`
+  width: 250px;
   vertical-align: center;
   text-align: center;
 
@@ -262,5 +300,9 @@ export const CancelProduct = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.color.lightGray};
+  }
+
+  @media (max-width: 500px) {
+    width: 10px;
   }
 `;

@@ -5,13 +5,14 @@ export const KitchenContainer = styled.main`
   min-height: calc(100dvh - 50px);
   min-height: calc(100dvh - 50px);
   height: 100%;
-  padding: 5% 8% 5% 8%;
+  padding: 60px;
   gap: 40px;
 
   display: flex;
 
-  @media (max-width: 450px) {
+  @media (max-width: 600px) {
     display: flex;
+    padding: 20px;
     flex-direction: column;
   }
 `;
@@ -26,7 +27,8 @@ export const PreparingContainer = styled.section`
   gap: 20px;
   border-right: 2px solid ${({ theme }) => theme.color.gray};
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
+    min-height: 100%;
     border: none;
   }
 `;
@@ -46,6 +48,10 @@ export const OrdersContainer = styled.article`
   gap: 20px;
 
   background-color: transparent;
+
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 
 export const PreparedContainer = styled.section`

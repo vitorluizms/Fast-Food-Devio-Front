@@ -36,6 +36,7 @@ export default function Feed() {
   const { searchProduct } = useSearch();
   const { productsArray } = cartStore();
   const navigate = useNavigate();
+  console.log(productsArray);
 
   useEffect(() => {
     getProduct();

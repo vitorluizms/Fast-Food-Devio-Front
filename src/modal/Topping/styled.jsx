@@ -41,6 +41,29 @@ export const LeftDiv = styled.div`
     flex-direction: column;
     gap: 10px;
   }
+
+  @media (max-width: 500px) {
+    width: 50%;
+    gap: 20px;
+
+    figure {
+      width: 60px;
+      height: 60px;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    h2 {
+      font-size: ${({ theme }) => theme.fonts.size.default};
+    }
+
+    p {
+      font-size: ${({ theme }) => theme.fonts.size.small};
+    }
+  }
 `;
 
 export const RightDiv = styled.div`
@@ -58,11 +81,19 @@ export const RightDiv = styled.div`
     letter-spacing: ${({ theme }) => theme.fonts.spacing.small};
     color: ${({ theme }) => theme.color.gray};
   }
+
+  @media (max-width: 500px) {
+    h3 {
+      font-size: ${({ theme }) => theme.fonts.size.default};
+    }
+  }
 `;
 
 export const SelectTopping = styled.button`
-  width: 20px;
-  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  max-width: 20px;
   padding: 1px;
 
   border-radius: ${({ theme }) => theme.border.radius.circle};
@@ -78,10 +109,19 @@ export const SelectTopping = styled.button`
 `;
 
 export const InnerCircle = styled.div`
-  width: 25px;
-  height: 100%;
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  max-height: 16px;
 
   border-radius: ${({ theme }) => theme.border.radius.circle};
   background-color: ${({ theme }) => theme.color.green};
   display: ${({ $isClicked }) => ($isClicked === false ? 'none' : '')};
+
+  @media (max-width: 500px) {
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+  }
 `;
