@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Container, OrderButton, StyledIcon, NavBar, KitchenButton, PickUpButton } from './styles';
-import { useNavBarState } from '../../store/NavBarButton';
 
 export default function Navbar() {
-  const { buttonSelected, toggleButton } = useNavBarState();
+  const location = useLocation();
   const navigate = useNavigate();
+
   return (
     <Container>
       <Link to="/">
@@ -16,27 +16,24 @@ export default function Navbar() {
       </Link>
       <NavBar>
         <OrderButton
-          $state={buttonSelected}
+          $state={location.pathname}
           onClick={() => {
-            toggleButton('orders');
             navigate('/');
           }}
         >
           Pedidos
         </OrderButton>
         <KitchenButton
-          $state={buttonSelected}
+          $state={location.pathname}
           onClick={() => {
-            toggleButton('kitchen');
             navigate('/kitchen');
           }}
         >
           Cozinha
         </KitchenButton>
         <PickUpButton
-          $state={buttonSelected}
+          $state={location}
           onClick={() => {
-            toggleButton('pickUp');
             navigate('/pickup');
           }}
         >
